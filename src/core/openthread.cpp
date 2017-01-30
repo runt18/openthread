@@ -1151,6 +1151,7 @@ uint32_t otGetPollPeriod(otInstance *aInstance)
 
 void otSetPollPeriod(otInstance *aInstance, uint32_t aPollPeriod)
 {
+    aInstance->mThreadNetif.GetMle().SetTimeout(aPollPeriod * 4 / 1000);
     aInstance->mThreadNetif.GetMeshForwarder().SetAssignPollPeriod(aPollPeriod);
 }
 
